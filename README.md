@@ -32,8 +32,8 @@ Pastikan struktur folder proyek Anda terlihat seperti berikut agar *script* berj
 ```text
 Tucil1_13524126/
 ├── bin/
-│   ├── run.bat      (Script jalan untuk Windows)
-│   └── run.sh       (Script jalan untuk Linux/Mac)
+│   ├── run.bat      (Script eksekusi untuk Windows)
+│   └── run.sh       (Script eksekusi untuk Linux/Mac)
 ├── src/
 │   └── Queens.py    (Source code utama)
 ├── test/
