@@ -2,7 +2,7 @@
 ## Penyelesaian Permainan Queens Linkedin
 
 ### a. Penjelasan Singkat Program
-Program ini adalah implementasi algoritma **Brute Force** untuk menyelesaikan variasi masalah N-Queens pada papan catur berukuran N x N. 
+Program ini adalah implementasi algoritma **Brute Force** untuk menyelesaikan variasi masalah N-Queens pada papan berwarna berukuran N x N. 
 
 Berbeda dengan masalah N-Queens standar, program ini mencari konfigurasi penempatan N ratu dengan aturan constraints sebagai berikut:
 1.  **Satu per Baris & Kolom:** Setiap baris dan setiap kolom hanya boleh diisi oleh tepat satu item.
@@ -28,6 +28,8 @@ Program ini berbasis *interpreted language* (Python), sehingga **tidak memerluka
 
 #### 1. Struktur Folder
 Pastikan struktur folder proyek Anda terlihat seperti berikut agar *script* berjalan lancar:
+
+```text
 Tucil1_13524126/
 ├── bin/
 │   ├── run.bat      (Script jalan untuk Windows)
@@ -38,6 +40,7 @@ Tucil1_13524126/
 │   ├── tc1.txt      (Contoh file input)
 │   └── ...
 └── README.md
+```
 
 #### 2. Menjalankan Program
 Anda dapat menjalankan program dengan dua cara:
