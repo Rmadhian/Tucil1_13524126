@@ -1,0 +1,9 @@
+Solusi tidak ditemukan:
+AABB#
+#AABB
+B#BAA
+BB#BA
+ABB#B
+
+Waktu pencarian: 128.7542 ms
+Banyak kasus yang ditinjau: 120 kasus

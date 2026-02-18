@@ -1,0 +1,10 @@
+Solusi tidak ditemukan:
+AAAAA#
+#BBBBC
+C#CCCD
+DD#DDE
+EEE#EA
+BBBB#C
+
+Waktu pencarian: 850.3109 ms
+Banyak kasus yang ditinjau: 720 kasus

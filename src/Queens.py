@@ -2,7 +2,7 @@ import time
 import os
 import sys
 
-biard =[]
+board =[]
 q_position = []
 count = 0
 
@@ -71,12 +71,12 @@ def permute(arr, start_idx, end_idx):
     count += 1
     current_comb = list(arr)
 
+    q_position = current_comb
+
     if count % 100 == 0:
       live_update(current_comb, len(board))
 
     if validate(current_comb, len(board)):
-      q_position = current_comb
-
       live_update(current_comb, len(board))
       return True
     return False
@@ -92,26 +92,29 @@ def save_file(nama_output_file, durasi, status, N):
   try:
     with open(nama_output_file, 'w') as f:
       if status:
-        for r in range(N):
-          baris = ""
-          for c in range(N):
-            if q_position[r] == c:
-              baris += "#"
-            else:
-              baris += board[r][c] + ""
-          f.write(baris + "\n")
-        f.write(f"\nWaktu pencarian: {durasi:.4f} ms\n")
-        f.write(f"Banyak kasus yang ditinjau: {count} kasus\n")
+        f.write("Solusi ditemukan:\n")
       else:
-        f.write("Solusi tidak ditemukan.\n")
-        f.write(f"\nWaktu pencarian: {durasi:.4f} ms\n")
-        f.write(f"Banyak kasus yang ditinjau: {count} kasus\n")
+        f.write("Solusi tidak ditemukan:\n")
+      for r in range(N):
+        line = ""
+        for c in range(N):
+          if q_position[r] == c:
+            line += "#"
+          else:
+            line += board[r][c] + ""
+        f.write(line + "\n")    
+      f.write(f"\nWaktu pencarian: {durasi:.4f} ms\n")
+      f.write(f"Banyak kasus yang ditinjau: {count} kasus\n")
     print(f"Solusi berhasil disimpan ke '{nama_output_file}'.")
   except Exception as e:
     print(f"Gagal menyimpan solusi ke '{nama_output_file}'.")
 
 input_file = input("Masukkan nama file: ")
-board_data = baca_file(input_file)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.dirname(script_dir)
+test_folder = os.path.join(project_dir, 'test')
+full_path = os.path.join(test_folder, input_file)
+board_data = baca_file(full_path)
 
 if board_data:
   board = board_data
@@ -124,23 +127,30 @@ if board_data:
 
   os.system('cls' if os.name == 'nt' else 'clear')
   if ketemu:
-    for r in range(N):
-      line = ""
-      for c in range(N):
-        if q_position[r] == c:
-          line += "#"
-        else:
-          line += board[r][c] + ""
-      print(line)
+    print("Solusi ditemukan:")
   else:
-    print("\nSolusi tidak ditemukan.")
-  print(f"Waktu pencarian: {durasi:.4f} ms")
+    print("Solusi tidak ditemukan:")
+  for r in range(N):
+    line = ""
+    for c in range(N):
+      if q_position[r] == c:
+        line += "#"
+      else:
+        line += board[r][c] + ""
+    print(line)
+  print(f"\nWaktu pencarian: {durasi:.4f} ms")
   print(f"Banyak kasus yang ditinjau: {count} kasus")
 
   simpan = input("Apakah Anda ingin menyimpan solusi? (y/n): ").lower()
   if simpan == 'y':
     output_file = input("Masukkan nama file output: ")
-    save_file(output_file, durasi, ketemu, N)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    test_folder = os.path.join(project_dir, 'test')
+    if not os.path.exists(test_folder):
+      os.makedirs(test_folder)
+    full_path = os.path.join(test_folder, output_file)
+    save_file(full_path, durasi, ketemu, N)
   else:
     print("Solusi tidak disimpan.")
 

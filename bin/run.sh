@@ -1,1 +1,2 @@
-python3 ../src/Queens1.py
+#!/bin/bash
+python3 ../src/Queens.py
